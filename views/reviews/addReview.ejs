@@ -1,0 +1,31 @@
+<%- include('../partials/navbar', { data: 'Add Review' }) %> 
+<div class="border w-25 mx-auto my-3">
+    <form action="" class="px-3 mx-3 my-3 mx-3" method="POST">
+        <div class="form-group">
+            <label for="restaurant">Restaurant</label>
+            <select name="restaurant" id="restaurant" class="form-control">
+                <option value="" selected disabled>Choose Restaurant</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="review">Review</label>
+            <textarea class="form-control" name="review" id="review" cols="30" rows="8" placeholder="Write your review here..."></textarea>
+        </div>
+        <div class="form-group">
+            <label for="rating">Rating</label>
+            <select class="form-control col-md-6" name="rating" id="rating">
+                <option value="" disabled selected>Choose Rating</option>
+                <option value="5">5</option>
+                <option value="5">4</option>
+                <option value="5">3</option>
+                <option value="5">2</option>
+                <option value="5">1</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-success btn-block" type="submit" value="Add Review">
+            <input class="btn btn-danger btn-block" type="button" value="Cancel">
+        </div>
+    </form>
+</div>
+<%- include('../partials/footer') %> 
