@@ -1,0 +1,41 @@
+<%- include('../partials/navbar', { data: 'All Reviews' }) %> 
+<h1 class="mx-5 my-5 text-center">Review List</h1>
+<div class="w-75 mx-auto mx-3 my-3">
+    <% if (name) { %>
+        <input class="btn btn-success" type="button" value="Add Review" onclick="location.href='/reviews/add'">
+    <% } %>  
+</div>
+<div>
+    <table class="table w-75 mx-auto table-bordered table-hover">
+        <thead class="thead-dark text-center">
+            <th>No</th>
+            <th>Restaurant Name</th>
+            <th>User Review</th>
+            <th>User Rating</th>
+            <% if (name) { %>
+                <th>Action</th>
+            <% } else { %>
+                <th>Reviewer Name</th>
+            <% } %>   
+        </thead>
+        <tbody>
+            <% for(let i = 0; i < data.length; i++) { %>
+                <tr>
+                    <td class="text-center"><%= i+1 %> </td>
+                    <td><%= data[i].Restaurants[0].name %> </td>
+                    <td><%= data[i].review %> </td>
+                    <td class="text-center"><%= data[i].rating %> </td>
+                    <% if (name) { %>
+                        <td>
+                            <input class="btn btn-info btn-block" type="button" value="Edit" onclick="location.href='/reviews/edit/<%= data[i].id %>'">
+                            <input class="btn btn-danger btn-block" type="button" value="Delete" onclick="location.href='/reviews/delete/<%= data[i].id %>'">
+                        </td>
+                    <% } else { %>
+                        <td class="text-center"><%= data[i].Customer.last_name %> </td>
+                    <% } %>
+                </tr>
+            <% } %>  
+        </tbody>
+    </table>
+</div>
+<%- include('../partials/footer') %> 

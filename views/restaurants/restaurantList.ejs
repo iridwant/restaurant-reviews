@@ -1,23 +1,30 @@
-<%- include('../partials/navbar', { data: 'Restaurant List'}) %> 
+<%- include('../partials/navbar', { data: 'Restaurant List'}) %>
+<h1 class="mx-5 my-5 text-center">Restaurant List</h1>
 <div class="my-3">
     <table class="table w-75 mx-auto table-bordered table-hover">
         <thead class="thead-dark text-center">
             <th>No</th>
             <th>Restaurant Name</th>
             <th>Address</th>
-            <th>Action</th>
+            <% if (name) { %>
+                <th>Action</th>
+            <% } %>  
         </thead>
         <tbody>
+            <% for(let i = 0; i < data.length; i++) { %>
             <tr>
-                <td class="text-center">1</td>
-                <td class="text-center">Bebek Tepi Sawah</td>
-                <td>Jl. Jalur Sutera No.Kav. 28A, Pakualam, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15325</td>
-                <td class="text-center">
-                    <input class="btn btn-success" type="button" value="Add Review">
-                    <input class="btn btn-info" type="button" value="View Reviews">
-                </td>
+                <td class="text-center"><%= i+1 %> </td>
+                <td class="text-center"><%= data[i].name %></td>
+                <td><%= data[i].address %> </td>
+                <% if (name) { %>
+                    <td class="text-center">
+                        <input class="btn btn-success btn-block" type="button" value="Add Review" onclick="location.href='reviews/add/<%= data[i].id %>'">
+                        <input class="btn btn-info btn-block" type="button" value="View Reviews" onclick="location.href='reviews/view/<%= data[i].id %>'">
+                    </td>
+                <% } %>  
             </tr>
+            <% } %>
         </tbody>
     </table>
 </div>
-<%- include('../partials/footer') %> 
+<%- include('../partials/footer') %>
